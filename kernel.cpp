@@ -1,4 +1,5 @@
 #include "types.h"
+#include "gdt.h"
 
 void printf(const int8_t* str) {
     static uint16_t* VideoMemory = (uint16_t*)0xb8000;
@@ -18,5 +19,6 @@ extern "C" void callConstructors() {
 
 extern "C" void kernelMain(void* multiboot_structure, unsigned int magicnumber) {
     printf("Hello, World!! --- KERNEL is running!\n");
+    GlobalDescriptorTable gdt;
     while (1);
 }
